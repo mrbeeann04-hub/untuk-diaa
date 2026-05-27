@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Untuk Diaa 💖</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      overflow-x:hidden;
+      min-height:100vh;
+      position:relative;
+      background:black;
+    }
+
+    /* Background Video */
+    #bg-video{
+      position:fixed;
+      top:0;
+      left:0;
+
+      width:100%;
+      height:100%;
+
+      object-fit:cover;
+
+      transform:scale(0.80);
+
+      z-index:-2;
+    }
+
+    /* Overlay */
+    body::before{
+      content:'';
+      position:fixed;
+      top:0;
+      left:0;
+
+      width:100%;
+      height:100%;
+
+      background:rgba(0,0,0,0.45);
+
+      z-index:-1;
+    }
+
+    /* Floating Hearts */
+    .heart{
+      position:fixed;
+      color:rgba(255,255,255,0.25);
+      animation:float 6s linear infinite;
+      z-index:1;
+      font-size:22px;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(100vh) scale(0.5);
+        opacity:0;
+      }
+
+      50%{
+        opacity:1;
+      }
+
+      100%{
+        transform:translateY(-100px) scale(1.2);
+        opacity:0;
+      }
+    }
+
+    /* Container */
+    .container{
+      width:90%;
+      max-width:950px;
+      margin:40px auto;
+
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(12px);
+
+      border-radius:35px;
+      overflow:hidden;
+
+      box-shadow:0 15px 40px rgba(0,0,0,0.3);
+
+      position:relative;
+      z-index:2;
+
+      animation:fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* Header */
+    .header{
+      background:linear-gradient(135deg,#ff6fa5,#ff98be);
+      color:white;
+      text-align:center;
+      padding:60px 20px;
+      position:relative;
+    }
+
+    .header::after{
+      content:'';
+      position:absolute;
+      bottom:-35px;
+      left:0;
+      width:100%;
+      height:70px;
+
+      background:rgba(255,255,255,0.08);
+
+      border-radius:50% 50% 0 0;
+    }
+
+    .header h1{
+      font-family:'Sacramento', cursive;
+      font-size:80px;
+      font-weight:normal;
+    }
+
+    .header p{
+      margin-top:10px;
+      font-size:18px;
+      letter-spacing:1px;
+    }
+
+    /* Content */
+    .content{
+      padding:70px 40px 40px;
+    }
+
+    .date{
+      display:inline-block;
+      background:rgba(255,255,255,0.2);
+      color:white;
+      padding:12px 20px;
+      border-radius:15px;
+      margin-bottom:30px;
+      font-size:14px;
+      font-weight:500;
+
+      backdrop-filter:blur(10px);
+    }
+
+    /* Message */
+    .message{
+      font-size:17px;
+      line-height:2;
+      color:white;
+      text-align:justify;
+
+      text-shadow:
+      0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .highlight{
+      color:#ffd4e5;
+      font-weight:600;
+    }
+
+    /* Gallery */
+    .gallery{
+      margin-top:45px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+    }
+
+    .photo{
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(10px);
+
+      border-radius:25px;
+      padding:35px 20px;
+
+      text-align:center;
+
+      cursor:pointer;
+      transition:0.3s;
+
+      box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .photo:hover{
+      transform:translateY(-8px) scale(1.03);
+    }
+
+    .photo span{
+      font-size:45px;
+      display:block;
+      margin-bottom:12px;
+    }
+
+    .photo h3{
+      color:white;
+      font-weight:500;
+    }
+
+    /* Quote */
+    .quote{
+      margin-top:40px;
+
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(10px);
+
+      padding:30px;
+
+      border-left:6px solid #ff5c96;
+      border-radius:20px;
+
+      color:white;
+
+      line-height:1.9;
+      font-style:italic;
+    }
+
+    /* Button */
+    .btn-area{
+      text-align:center;
+      margin-top:40px;
+    }
+
+    button{
+      border:none;
+      padding:15px 35px;
+
+      border-radius:50px;
+
+      background:linear-gradient(135deg,#ff5c96,#ff7eb3);
+
+      color:white;
+      font-size:16px;
+
+      cursor:pointer;
+      transition:0.3s;
+
+      box-shadow:0 8px 20px rgba(255,92,150,0.3);
+    }
+
+    button:hover{
+      transform:scale(1.05);
+    }
+
+    .footer{
+      margin-top:40px;
+      text-align:center;
+      color:white;
+      font-size:14px;
+    }
+
+    /* Popup */
+    .popup{
+      position:fixed;
+      top:0;
+      left:0;
+
+      width:100%;
+      height:100%;
+
+      background:rgba(0,0,0,0.6);
+
+      display:none;
+      justify-content:center;
+      align-items:center;
+
+      z-index:999;
+
+      padding:20px;
+    }
+
+    .popup-content{
+      background:rgba(255,255,255,0.1);
+
+      backdrop-filter:blur(15px);
+
+      width:100%;
+      max-width:550px;
+
+      border-radius:25px;
+
+      padding:35px;
+
+      position:relative;
+
+      animation:popupShow 0.4s ease;
+
+      text-align:center;
+
+      max-height:90vh;
+      overflow-y:auto;
+    }
+
+    @keyframes popupShow{
+      from{
+        opacity:0;
+        transform:scale(0.8);
+      }
+
+      to{
+        opacity:1;
+        transform:scale(1);
+      }
+    }
+
+    .popup-content h2{
+      color:white;
+      margin-bottom:15px;
+    }
+
+    .popup-content p{
+      color:white;
+      line-height:1.9;
+      margin-bottom:20px;
+    }
+
+    .popup-content video{
+      width:100%;
+      max-width:320px;
+
+      display:block;
+      margin:auto;
+
+      border-radius:20px;
+
+      box-shadow:0 5px 20px rgba(0,0,0,0.4);
+    }
+
+    .close{
+      position:absolute;
+      top:15px;
+      right:15px;
+
+      width:35px;
+      height:35px;
+
+      border:none;
+      border-radius:50%;
+
+      background:#ff4d88;
+
+      color:white;
+
+      cursor:pointer;
+
+      font-size:14px;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+
+      .header h1{
+        font-size:58px;
+      }
+
+      .content{
+        padding:60px 25px 30px;
+      }
+
+      .message{
+        font-size:15px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline id="bg-video">
+
+    <source src="bacground.mp4" type="video/mp4">
+
+  </video>
+
+  <!-- Floating Hearts -->
+  <div class="heart" style="left:10%; animation-delay:0s;">❤</div>
+  <div class="heart" style="left:25%; animation-delay:2s;">❤</div>
+  <div class="heart" style="left:50%; animation-delay:4s;">❤</div>
+  <div class="heart" style="left:75%; animation-delay:1s;">❤</div>
+  <div class="heart" style="left:90%; animation-delay:3s;">❤</div>
+
+  <!-- Container -->
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <h1>Untuk Diaa</h1>
+      <p>Rodiattul Jannah 💖</p>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+      <!-- Date -->
+      <div class="date" id="tanggal"></div>
+
+      <!-- Message -->
+      <div class="message">
+
+        Hai sayangku,
+        <span class="highlight">Rodiattul Jannah</span> ✨
+
+        <br><br>
+
+        Aku cuma ingin menuliskan sedikit tentang betapa berharganya kamu di hidupku.
+        Sejak kamu hadir, semuanya terasa lebih hangat dan lebih indah.
+
+        Senyumanmu selalu berhasil membuat hariku membaik,
+        bahkan ketika keadaan sedang tidak baik-baik saja.
+
+        <br><br>
+
+        Terima kasih karena sudah menjadi seseorang yang selalu membuatku nyaman,
+        didengar, dan disayang.
+
+        Aku berharap hubungan kita selalu dipenuhi kebahagiaan,
+        kejujuran, dan cinta yang tidak pernah habis oleh waktu ❤️
+
+      </div>
+
+      <!-- Gallery -->
+      <div class="gallery">
+
+        <div class="photo" onclick="openPopup('kenangan')">
+          <span>🌸</span>
+          <h3>Kenangan Manis</h3>
+        </div>
+
+        <div class="photo" onclick="openPopup('pesan')">
+          <span>💌</span>
+          <h3>Pesan Cinta</h3>
+        </div>
+
+        <div class="photo" onclick="openPopup('malam')">
+          <span>🌙</span>
+          <h3>Malam Bersamamu</h3>
+        </div>
+
+      </div>
+
+      <!-- Quote -->
+      <div class="quote">
+        “Aku tidak butuh banyak hal untuk bahagia,
+        cukup kamu tetap ada di sisiku.” 💕
+      </div>
+
+      <!-- Button -->
+      <div class="btn-area">
+        <button onclick="loveMessage()">
+          Buka Pesan Rahasia 💌
+        </button>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        Dibuat dengan penuh cinta untuk perempuan terbaik ✨
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Popup -->
+  <div class="popup" id="popup">
+
+    <div class="popup-content">
+
+      <button class="close" onclick="closePopup()">✖</button>
+
+      <div id="popupText"></div>
+
+    </div>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+
+    // Date otomatis
+    const tanggal = new Date();
+
+    document.getElementById("tanggal").innerHTML =
+      tanggal.toLocaleDateString("id-ID",{
+        weekday:'long',
+        year:'numeric',
+        month:'long',
+        day:'numeric'
+      });
+
+    // Tombol pesan rahasia
+    function loveMessage(){
+      alert("Terima kasih sudah hadir di hidupku ❤️");
+    }
+
+    // Popup
+    function openPopup(type){
+
+      const popup = document.getElementById("popup");
+      const popupText = document.getElementById("popupText");
+
+      // Kenangan
+      if(type === "kenangan"){
+
+        popupText.innerHTML = `
+        
+          <h2>🌸 Kenangan Manis</h2>
+
+          <p>
+            Semua momen bersama kamu selalu jadi hal paling indah yang pernah aku punya ❤️
+          </p>
+
+          <video controls autoplay playsinline>
+
+            <source src="kenangan.mp4" type="video/mp4">
+
+          </video>
+
+        `;
+
+      }
+
+      // Pesan cinta
+      else if(type === "pesan"){
+
+        popupText.innerHTML = `
+
+          <h2>💌 Pesan Cinta</h2>
+
+          <p>
+            Untuk Rodiattul Jannah,
+            terima kasih karena selalu hadir dan membuat hidupku terasa lebih indah.
+            Aku mungkin tidak sempurna,
+            tapi rasa sayangku ke kamu selalu tulus ❤️
+          </p>
+
+        `;
+
+      }
+
+      // Malam
+      else if(type === "malam"){
+
+        popupText.innerHTML = `
+
+          <h2>🌙 Malam Bersamamu</h2>
+
+          <p>
+            Malam terasa jauh lebih indah ketika aku berbicara denganmu.
+            Bahkan hal sederhana seperti mendengar suaramu
+            bisa membuat hariku terasa lengkap ✨
+          </p>
+
+        `;
+
+      }
+
+      popup.style.display = "flex";
+
+    }
+
+    // Close popup
+    function closePopup(){
+      document.getElementById("popup").style.display = "none";
+    }
+
+  </script>
+
+</body>
+</html>
