@@ -272,6 +272,45 @@
       font-size:14px;
     }
 
+    /* Birthday Section */
+.birthday-section,
+.love-counter,
+.countdown-box,
+.gift-box{
+
+  margin-top:30px;
+
+  background:rgba(255,255,255,0.12);
+
+  backdrop-filter:blur(10px);
+
+  padding:25px;
+
+  border-radius:20px;
+
+  color:white;
+
+  text-align:center;
+}
+
+.gift-box{
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.gift-box:hover{
+  transform:scale(1.05);
+}
+
+.gift-box h2{
+  font-size:50px;
+}
+
+.love-counter h1,
+.countdown-box h1{
+  margin-top:10px;
+}
+
     /* Popup */
     .popup{
       position:fixed;
@@ -444,6 +483,37 @@
 
       </div>
 
+
+      <!-- Birthday Section -->
+      <div class="birthday-section">
+
+        <h2>🎂 Happy Birthday Sayang 🎂</h2>
+
+        <p>
+          Selamat ulang tahun untuk perempuan terbaikku,
+          Rodiattul Jannah ❤️
+          Semoga panjang umur, sehat selalu, bahagia selalu,
+          dimudahkan segala urusannya, dan semua impianmu tercapai ✨
+        </p>
+
+      </div>
+
+      <div class="love-counter">
+        <h3>❤️ Kita Sudah Bersama ❤️</h3>
+        <h1 id="relationshipCounter"></h1>
+      </div>
+
+      <div class="countdown-box">
+        <h3>🎂 Menuju Ulang Tahun Berikutnya 🎂</h3>
+        <h1 id="countdown"></h1>
+      </div>
+
+      <div class="gift-box" onclick="openGift()">
+        <h2>🎁</h2>
+        <h3>Klik Kadonya Sayang</h3>
+      </div>
+
+
       <!-- Gallery -->
       <div class="gallery">
 
@@ -588,6 +658,61 @@
     function closePopup(){
       document.getElementById("popup").style.display = "none";
     }
+
+    
+
+
+
+    // Kado
+    function openGift(){
+
+      alert(`🎂 Happy Birthday Rodiattul Jannah ❤️
+
+Semoga semua impianmu tercapai,
+selalu sehat,
+selalu bahagia,
+dan selalu menjadi perempuan hebat.
+
+Dari Aku ❤️`);
+
+    }
+
+    const startDate = new Date("2023-11-06");
+
+    function updateRelationship(){
+
+      const now = new Date();
+      const diff = now - startDate;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+      const el = document.getElementById("relationshipCounter");
+      if(el) el.innerHTML = days + " Hari";
+
+    }
+
+    updateRelationship();
+
+    function updateCountdown(){
+
+      const now = new Date();
+
+      let nextBirthday = new Date(now.getFullYear(),5,8);
+
+      if(now > nextBirthday){
+        nextBirthday = new Date(now.getFullYear()+1,5,8);
+      }
+
+      const diff = nextBirthday - now;
+
+      const days = Math.floor(diff/(1000*60*60*24));
+
+      const el = document.getElementById("countdown");
+      if(el) el.innerHTML = days + " Hari";
+
+    }
+
+    updateCountdown();
+
 
   </script>
 
